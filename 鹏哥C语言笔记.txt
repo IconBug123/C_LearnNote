@@ -13,7 +13,32 @@ int main(){
 char arr[] = {'a', 'b', '\0'};  //此处要有\0
 printf("%s", arr);
 
+arr[] = {1, 2, 3};
+strlen(arr)     //此处不是3, 因为strlen只有到/0才停止
 
+  
 ③
 转义字符
 \字符   表示其他含义。如\n, \0 ......
+
+
+④
+static是内部链接
+extern是外部链接，因此不能extern int a；声明后用static int a = 10；定义
+如果用static int a = 10；则该变量只能在该文件使用，因为链接改变了
+extern 声明的变量在file1.c，可以在其他文件里file2.c里定义，可以在任意文件里使用，由于是
+外部链接属性因此不需要头文件。函数也可以用extern。
+static如同把函数或是变量私有化，仅仅是声明时所在的文件可以用
+
+register int num = 3；建议把num放到寄存器里，但不一定。
+ 
+
+⑤
+int* p1, p2, p3;
+此处p1是指针，p2和p3是int变量
+int* p1, *p2, *p3;
+
+
+
+
+
