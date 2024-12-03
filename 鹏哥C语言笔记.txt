@@ -55,3 +55,17 @@ for(i=100; i<200; i++)
 ⑧
 C语言里的函数的数组形参int arr[]与int* arr是一样的都是一个int的指针。
 但是在函数里无法求得数组arr的size因为在函数里只是一个数组的首元素地址
+
+函数里的形参int arr[][3] 和 int (*arr)[][3]的区别：
+	前者int arr[][3] 是 &arr[0] 或 arr
+	后者int (*arr)[][3] 是 &arr
+
+⑨ 静态库 44集
+通过该静态库的头文件和该静态库 add.lib（此处add名字是随意起的）
+在主函数main里#pragma comment(lib, "add.lib")
+
+
+
+
+
+
