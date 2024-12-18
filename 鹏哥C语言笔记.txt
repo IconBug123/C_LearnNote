@@ -1,4 +1,10 @@
-①
+每日问题和扩展归总：
+	1 动态和静态库
+	2 回调函数
+	3 数据库的使用
+	
+
+ ①
 int main(){
   {
   	int a = 10;
@@ -65,7 +71,7 @@ C语言里的函数的数组形参int arr[]与int* arr是一样的都是一个in
 通过该静态库的头文件和该静态库 add.lib（此处add名字是随意起的）
 在主函数main里#pragma comment(lib, "add.lib")
 
-
+ 
 ⑩
 在C99之后的数组可以用变量指定其size
 如: int n = 10;
