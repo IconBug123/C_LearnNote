@@ -149,5 +149,7 @@ str_1 = str_2;   //不能*str_1 = *str_2;修改元素内容
 
 因此strcpy函数里的参数是char arr[] = "abc"; 不是字符串, 而是一个字符数组
 
+字符串有两种表达：const char* str = "abc";  char arr[] = "abc";
+
 
 
