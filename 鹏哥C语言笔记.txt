@@ -181,5 +181,6 @@ void* ap = &a;
 
 
 ⑩⑧
-
+strerror函数可以打印处错误信息, 错误信息保存在errno (int) 里面 #include <string.h>
+char* strerror(errno);
 
