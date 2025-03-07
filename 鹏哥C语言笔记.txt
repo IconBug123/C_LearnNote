@@ -137,6 +137,13 @@ int c = (a++, a+b); 结果为 c = 4
 指针是变量是变量的初始地址 (一般是低地址) 一个地址的存储空间是1byte
 占有不同字节大小的数据它们的存储方式是字节按照大小端存储 (大小端只是存储数据的字节byte的顺序)。char类型没有大小端之分
 
+typedef 原有名字  newName;
+typedef struct Name{....} newName;   
+typedef char* String;	指针新名字String
+typedef struct Node{int val; struct Node* next}Node, *NodePtr;     结构体指针  NodePtr   相当于struct Node* 而Node 相当于struct Node
+typedef int(*FuncPtr)(int, char, ...);      该函数指针数据类型的新名字FunPtr
+
+
 
 ⑩⑤
 
