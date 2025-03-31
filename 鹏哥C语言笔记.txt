@@ -372,6 +372,22 @@ int check_sys(){
 （2）当内存 free(p) 后，要  p = NULL;
 （3）注意动态空间(堆空间上的)使用后要释放
 
+char* get_m(char* ptr_1) {
+	return ptr_1 = (char*)malloc(100);
+}
+char* ptr_1 = NULL;
+ptr_1 = get_m(ptr_1);
+
+void get_mm(char** ptr_1) {
+	*ptr_1 = (char*)malloc(100);
+}
+char* ptr_1 = NULL;
+get_m(ptr_1);
+
+//void get_mm(char* ptr_1) {
+//	ptr_1 = (char*)malloc(100);
+//}就不能给外部的char* ptr_1申请空间
+
 
 4柔性数组
 
