@@ -146,6 +146,7 @@ int c = (a++, a+b); 结果为 c = 4
 占有不同字节大小的数据它们的存储方式是字节按照大小端存储 (大小端只是存储数据的字节byte的顺序)。char类型没有大小端之分
 
 注意：int* fun(){int x=10; return &x;}此处的返回值是一个野指针，由于x在函数结束后就销毁了
+	  char* ptr = NULL; 说明指针ptr的地址是NULL没有地址
 
 typedef 原有名字  newName;
 typedef struct Name{....} newName;   
