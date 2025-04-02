@@ -361,11 +361,13 @@ int check_sys(){
 	realloc可以调节空间大小 (其实是新开辟了一个新的空间，将之前的数据拷贝过来了，
 	有可能在原空间上开辟，也可能在新地址上开辟)
 	当给realloc一个空指针的话功能和malloc一样
-	realloc会自动把之前的空间释放
+	*** realloc会自动把之前的空间释放, 若果realloc开辟失败则原来的空间不会被释放
+
 （4）free
 	释放申请的动态空间 (堆空间)，对于int* a =&b; 这些不能用，由于是栈空间 
 	free释放的堆空间要注意：指针是该空间的起始位置
 	free不能对同一个堆空间多次释放，除非是该指针 = NULL, 因为free(NULL)等于什么都没做
+	free顺序是按照开辟的逆序
 
 
 3 常见的动态内存错误
@@ -390,16 +392,47 @@ get_m(ptr_1);
 //}就不能给外部的char* ptr_1申请空间
 
 
+
 4柔性数组
+	1 结构体里最后一个成员可以允许是一个未知大小的数组 (前面必须有其他成员)，称为柔性数组成员
+
+	struct S{
+		int i;
+		int a[]; 或int a[0]; 
+	};
+	
+	2 sizeof(柔性数组的结构体) 数组不在计算内存范围内 sizeof(struct S) = 4 只有 int 的内存
+	3 创建变量时不能 struct S s而是：struct S* ptr = (struct S*)malloc(sizeof(struct S)+40) 给柔性数组开辟 40 bytes
+
+	柔性是指: 当开辟后的数组可以在通过realloc去改变数组的大小 struct S* ptr_new = (struct S*)realloc(ptr, sizeof(struct S)+80);
+
+ 	也可以
+	struct S{
+		int i;
+		int* arr; 
+	};
+	struct S* ptrs = (struct S*)malloc(sizeof(struct S));   目的是放到堆区(与柔性数组一致)
+	ptrs->arr = (int*)malloc(40);
+	int* arr_2 = (int*)realloc(prts->arr, 80);  
+	但是这个方法要两次malloc，不推荐
 
 
 
 
+②⑩④
+文件处理
+每个被使用的文件都是在内存里有个文件信息区(是一个结构体 FILE) 因此这个文件的地址就是FILE* 
+FILE* fp 这个指针对应的就是该地址的文件的存储空间 
 
+文件信息区的地址(确定内存空间)的函数 FILE* fopen(const char* filename, const char* mode) 函数   char* filename（不是本地路径的需要绝对路径\\第一个\是转义符）
+	
+	FILE* fp = fopen(.....);  这个地址是为了确定这个文件信息区的储存器的空间
+	fclose(fp); （fp=NULL;）
 
+读写过程：有对应的函数如：int fputs(int character, FILE* fp);   int character 是把字符强转为ASIIC码值
 
-
-
+介绍内容：sprintf 把结构化数据转化成字符串char arr[10];
+		 sscanf 把字符串char arr[10]里的数据转换为格式化数据 
 
 
 
