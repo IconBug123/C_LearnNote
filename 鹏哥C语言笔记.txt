@@ -426,10 +426,11 @@ FILE* fp 这个指针对应的就是该地址的文件的存储空间
 
 文件信息区的地址(确定内存空间)的函数 FILE* fopen(const char* filename, const char* mode) 函数   char* filename（不是本地路径的需要绝对路径\\第一个\是转义符）
 	
-	FILE* fp = fopen(.....);  这个地址是为了确定这个文件信息区的储存器的空间
+	FILE* fp = fopen(.....);  这个地址是为了确定这个文件信息区的储存器的空间范围，从而可以通过读写函数对其内部内容操作
 	fclose(fp); （fp=NULL;）
 
-读写过程：有对应的函数如：int fputs(int character, FILE* fp);   int character 是把字符强转为ASIIC码值
+读写过程：有对应的函数如：int fputc(int character, FILE* fp);   int character 是把字符强转为ASIIC码值
+					     int fputs(const char *str, FILE *stream);
 
 介绍内容：sprintf 把结构化数据转化成字符串char arr[10];
 		 sscanf 把字符串char arr[10]里的数据转换为格式化数据 
