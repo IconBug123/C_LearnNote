@@ -393,7 +393,7 @@ get_m(ptr_1);
 
 
 
-4柔性数组
+4 柔性数组
 	1 结构体里最后一个成员可以允许是一个未知大小的数组 (前面必须有其他成员)，称为柔性数组成员
 
 	struct S{
@@ -437,6 +437,7 @@ FILE* fp 这个指针对应的就是该地址的文件的存储空间
 
 
 
+
 ②⑩⑤
 main.c → 编译过程（预处理，编译，汇编）→ 链接过程
 		
@@ -445,10 +446,39 @@ main.c → 编译过程（预处理，编译，汇编）→ 链接过程
 汇编过程：把汇编代码转换为2进制代码 每个原文件都有符号表
 
 链接过程：合并段表，符号表的合并和重定位  (符号表的目的是可以跨文件链接)
- 
+
+1. 宏（）
+#define name( parament-list ) stuff
+此处parameter-list是一个有逗号隔开的符号表，他们可能出现在stuff，不是一个整体
+parameter-list的左括号要与name紧密相连
+如：#define SQUARE(X) X*X  
+	会替换SQUARE(5)  5*5  此处X如果是5+1，则5+1*5+1
+       #define SQUARE(X)  ((X)+(X))     外侧括号目的是: 10*((3)+(3))
+        字符串里的不会替换
 
 
+2#和##
+#是把内容转化为字符串 
+#define PRINT(N) printf("The value is "#N" is %d\n", N)
+由于#N被替换为"N" 此时printf("The value is ""N"" is %d\n", N)
+printf("Hello ""World") 等价与printf("Hello World");
 
+##把它两边的符号合成一个符号
+ #define CAT(Class, Num) Class##Num
+ int Class106 = 100;
+ printf("%d\n", CAT(Class, 106));  如同printf("%d\n", Class106);
+
+小型的计算可以用宏，但是宏不能调试，数据与类型无关，不够严谨 
+
+
+3#undef
+解除这个M的宏定义 #undef M
+
+
+4 宏判断
+
+
+offsetof计算结构体内数据的偏移量   #define OFFSETOF(type, m_name)  (size_t)&(((type*)0)->m_name)
 
 
 
