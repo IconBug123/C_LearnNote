@@ -12,7 +12,7 @@ C语言的主要内容核心点
 
 
 要做的事情:
-写一个动态内存的笔记, 里面包含⑩⑤节内容
+√写一个动态内存的笔记, 里面包含⑩⑤节内容
 
  ①
 int main(){
@@ -456,6 +456,7 @@ parameter-list的左括号要与name紧密相连
        #define SQUARE(X)  ((X)+(X))     外侧括号目的是: 10*((3)+(3))
         字符串里的不会替换
 
+offsetof 计算结构体内数据的偏移量   #define OFFSETOF(type, m_name)  (size_t)&(((type*)0)->m_name)
 
 2#和##
 #是把内容转化为字符串 
@@ -477,9 +478,13 @@ printf("Hello ""World") 等价与printf("Hello World");
 
 4 宏判断
 
-
-offsetof计算结构体内数据的偏移量   #define OFFSETOF(type, m_name)  (size_t)&(((type*)0)->m_name)
-
-
-
+指令	常用场景
+#ifdef		判断某个宏是否已定义
+#ifndef		判断某个宏是否没有被定义
+#define		定义宏（通常配合条件编译使用）
+#undef		取消定义某个宏
+#if			更复杂的条件判断（可以加表达式）
+#else		否则的情况
+#elif	else if，	多个条件判断时使用
+#endif		结束条件编译区块
 
