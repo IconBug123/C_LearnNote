@@ -331,10 +331,10 @@ int check_sys(){
 	
 地址高
 	栈区：局部变量，形式参数 (这些临时变量用完后自动回收空间)
-	堆区：malloc realloc calloc free 当程序退出时系统会自动回收。
-	静态区：主要存放程序运行期间一直存在的变量（全局变量，静态变量）
+	堆区：malloc realloc calloc free 当程序退出时系统会自动回收。  (∈全局区)
+	静态区：主要存放程序运行期间一直存在的变量（全局变量，静态变量）    (∈全局区)
 	常量区：字符串字面量, const修饰的常量	
-	代码区： 编译后生成的程序指令
+	代码区： 编译后生成的程序指令0101指令
 低地址
 
 
@@ -353,7 +353,7 @@ int check_sys(){
 	
 （2）calloc
 	void* calloc(size_t num, size_t size)
-	开辟num个，每个空间大小为size的，而且初始化里面的数据
+	开辟num个，每个空间大小为size的，而且初始化里面的数据，(创建出来的不是数组，只是动态连续空间的首地址)
 
 （3）realloc
 	void* realloc(void* ptr, size_t size)
